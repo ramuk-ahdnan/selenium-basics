@@ -24,7 +24,7 @@ public class ExcelReadWrite {
 	public void updateStatus(List<String> list) throws Throwable {
 		try {
 		
-		File file = new File("C:\\Users\\cuten\\IDE-Handson\\nk-automation\\src\\test\\resources\\Status.xlsx");
+		File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Status.xlsx");
 		FileInputStream inputStream = new FileInputStream(file);
 		Workbook workbook = new XSSFWorkbook(inputStream);
 		Sheet sheet = workbook.getSheetAt(0);
@@ -63,7 +63,7 @@ public class ExcelReadWrite {
 	public void readExcel() throws Throwable {
 		try {
 		
-		File file = new File("C:\\Users\\cuten\\IDE-Handson\\nk-automation\\src\\test\\resources\\Demo.xlsx");
+		File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Status.xlsx");
 		FileInputStream inputStream = new FileInputStream(file);
 		Workbook workbook = new XSSFWorkbook(inputStream);
 		Sheet sheet = workbook.getSheetAt(0);
@@ -86,7 +86,7 @@ public class ExcelReadWrite {
 	public void writeExcel() throws Throwable {
 		try {
 		
-		File file = new File("C:\\Users\\cuten\\IDE-Handson\\nk-automation\\src\\test\\resources\\Demo.xlsx");
+		File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Status.xlsx");
 		FileInputStream inputStream = new FileInputStream(file);
 		Workbook workbook = new XSSFWorkbook(inputStream);
 		Sheet sheet = workbook.getSheetAt(0);

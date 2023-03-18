@@ -41,7 +41,7 @@ public class appLocators {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			options.merge(capabilities);
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\cuten\\Downloads\\chromedriver_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\web-drivers\\chromedriver.exe");
 			
 			driver = new ChromeDriver(options);
 			driver.manage().deleteAllCookies();
@@ -127,10 +127,10 @@ public class appLocators {
 		try {
 			driver.switchTo().defaultContent();
 			waitForElementVisible(driver.findElement(By.xpath("//input[@id='continue']")));
-			driver.findElement(By.xpath("//input[@name='email']")).sendKeys("phone number");
+			driver.findElement(By.xpath("//input[@name='email']")).sendKeys("login id");
 			click(driver.findElement(By.xpath("//input[@id='continue']")));
 			waitForElementVisible(driver.findElement(By.xpath("//input[@name='password']")));
-			driver.findElement(By.xpath("//input[@name='password']")).sendKeys("password");
+			driver.findElement(By.xpath("//input[@name='password']")).sendKeys("login password");
 			click(driver.findElement(By.xpath("//input[@id='signInSubmit']")));
 			waitForElementVisible(driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']")));
 			reportLog("Application Login successful","PASS");
@@ -152,6 +152,7 @@ public class appLocators {
 			waitForElementVisible(driver.findElement(By.xpath("//span[text()='RESULTS']")));
 			try {
 				int size = driver.findElements(By.xpath("//span[contains(text(),'"+product+"') and @class='a-size-medium a-color-base a-text-normal']")).size();
+				System.out.println("Size: "+size);
 				if(size>0) {
 					driver.findElements(By.xpath("//span[contains(text(),'"+product+"') and @class='a-size-medium a-color-base a-text-normal']"));
 					Actions action = new Actions(driver);
@@ -159,6 +160,7 @@ public class appLocators {
 					reportLog("The results for "+product+" are displayed","PASS");
 				}
 			}catch(Exception e) {
+				e.printStackTrace();
 				reportLog("The results for "+product+" are not displayed","PASS");
 			}
 			
@@ -193,7 +195,7 @@ public class appLocators {
 				Actions action = new Actions(driver);
 				action.moveToElement(driver.findElement(By.xpath("//a[@id='nav-link-accountList']"))).moveToElement(driver.findElement(By.xpath("//span[text()='Sign Out']"))).click().build().perform();
 			}catch(Exception e) {
-				
+				e.printStackTrace();
 			}
 			waitForElementVisible(driver.findElement(By.xpath("//input[@id='continue']")));
 			reportLog("Application Logout successful","PASS");
