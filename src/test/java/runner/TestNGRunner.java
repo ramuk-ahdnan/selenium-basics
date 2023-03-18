@@ -17,7 +17,7 @@ plugin = {"json:target/testng-report.json","html:target/testng-report.html","pre
 monochrome = false)
 public class TestNGRunner extends  AbstractTestNGCucumberTests{
 	
-	public static ExtentSparkReporter reporter = new ExtentSparkReporter("./ExtentReport.html");
+	public static ExtentSparkReporter reporter = new ExtentSparkReporter("./AutomationReport.html");
 	public static ExtentReports extent = new ExtentReports();
 	public static ExtentTest test = null;
 	

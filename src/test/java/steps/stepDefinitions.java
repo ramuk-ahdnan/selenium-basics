@@ -55,6 +55,11 @@ public class stepDefinitions {
 		list.add(status);
 		excelwrite.updateStatus(list);
 		TestNGRunner.extent.flush();
+		try {
+			driver.quit();
+		}catch(Exception e) {
+			System.out.println("Driver already closed");
+		}
 	}
 	
 	
